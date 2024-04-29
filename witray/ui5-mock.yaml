@@ -1,0 +1,62 @@
+specVersion: "3.1"
+metadata:
+  name: witray
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /V2
+            url: https://services.odata.org
+          - path: /sap
+            url: http://devecdsso:443
+            client: "004"
+            destination: BusinessApplicationStudioSSO
+          - path: /sap/opu/odata/sap/Z_TRAYDATA_SRV
+            url: http://devecdsso:443
+            client: "004"
+            destination: BusinessApplicationStudioSSO
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: ui5-tooling-transpile-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+        excludePatterns:
+          - /Component-preload.js
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /V2/Northwind/Northwind.svc
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/Z_TRAYDATA_SRV
+            metadataPath: ./webapp/localService/Z_TRAYDATA_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/Z_TRAYDATA_SRV/mockdata
+            generateMockData: true
+        annotations: []
+builder:
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true

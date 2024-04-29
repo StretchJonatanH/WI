@@ -1,0 +1,564 @@
+<mvc:View
+    controllerName="workinstructiontray.controller.Detail"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        upperCaseAnchorBar="false"
+        alwaysShowContentHeader="true"
+    >
+        <headerTitle>
+            <ObjectPageHeader
+                id="header"
+                objectTitle="Long title that wraps and goes over more lines"
+                showTitleSelector="false"
+                titleSelectorPress="handleTitleSelectorPress"
+                objectSubtitle="version: {data>/version}"
+            >
+                <actions>
+                    <m:HBox alignItems="End">
+                        <!-- <m:Button class="sapUiMediumMarginTop" text="Back"   type="Back"/> -->
+                        <m:Button
+                            class="sapUiSmallMargin"
+                            text="View WI"
+                            type="Emphasized"
+                            press="toPDF"
+                        />
+                        <m:Button
+                            class="sapUiSmallMargin"
+                            text="Tray Designer"
+                            type="Emphasized"
+                            press="toTrayDesigner"
+                        />
+                    </m:HBox>
+                </actions>
+                <breadcrumbs>
+                    <m:Breadcrumbs>
+                        <m:Link
+                            text="Back to Search"
+                            press="handleBackPress"
+                        />
+                    </m:Breadcrumbs>
+                </breadcrumbs>
+            </ObjectPageHeader>
+        </headerTitle>
+        <headerContent>
+            <layout:VerticalLayout>
+                <m:HBox>
+                    <m:VBox
+                        id="labelsStart"
+                        direction="Column"
+                        alignItems="Start"
+                    >
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Tray description:"
+                        />
+                        <m:Label
+                            class=""
+                            text=""
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Delivery Country:"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Version Date:"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Created By:"
+                        />
+                    </m:VBox>
+                    <m:VBox id="labelsEndBold">
+                        <m:Label
+                            design="Bold"
+                            text=" {data>/trayDescription}"
+                        />
+                        <m:Label
+                            class=""
+                            text=""
+                        />
+                        <m:Label
+                            design="Bold"
+                            text=" {data>/deliverCountry}"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text=" {data>/versionDate}"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text=" {data>/createdBy}"
+                        />
+                    </m:VBox>
+                </m:HBox>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout class="sapUiLargeMarginBeginEnd">
+                <m:Label
+                    design="Standard"
+                    text="Special Instructions Market"
+                />
+                <m:TextArea
+                    id="SIM"
+                    height="90px"
+                    width="180px"
+                    liveChange="handleLiveChange"
+                />
+                <m:Button
+                    id="editSIM"
+                    press=".editSIM"
+                    text="Edit"
+                />
+            </layout:VerticalLayout>
+            <layout:VerticalLayout class="sapUiSmallBegin">
+                <m:Label
+                    design="Standard"
+                    text="Special Instructions Factory"
+                />
+                <m:TextArea
+                    id="SIF"
+                    height="90px"
+                    width="180px"
+                />
+                <m:Button
+                    id="editSIF"
+                    press=".editSIF"
+                    text="Edit"
+                />
+            </layout:VerticalLayout>
+            <layout:VerticalLayout class="sapUiSmallBegin">
+                <m:Label
+                    design="Standard"
+                    text="Wi Status"
+                />
+                <layout:HorizontalLayout>
+                	<m:Input
+				    id="inputStatus"
+                        class="sapUiSmallMarginBottom"
+                        type="Text"
+                        placeholder="Product"
+                        enabled="true"
+                        editable="false"
+                    />
+                       <m:Button
+                        class="sapUiSmallMarginBegin"
+                        id="editStatus"
+                        press=".editStatus"
+                        text="Edit"
+                    />
+                </layout:HorizontalLayout>
+                <m:Label
+                    class="sapUiSmallMarginTop"
+                    design="Standard"
+                    text="Folding Method"
+                />
+                <layout:HorizontalLayout>
+                  	<m:Input
+				    id="inputFold"
+                        class="sapUiSmallMarginBottom"
+                        type="Text"
+                        placeholder="Product"
+                        enabled="true"
+                        editable="false"
+                    />
+                    <m:Button
+                        class="sapUiSmallMarginBegin"
+                        id="editFold"
+                        press=".editFold"
+                        text="Edit"
+                    />
+                </layout:HorizontalLayout>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <m:HBox>
+                    <m:VBox
+                        id="endlabelsStart"
+                        direction="Column"
+                        alignItems="Start"
+                    >
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text=""
+                        />
+                        <m:Label
+                            class=""
+                            text=""
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Color"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Color Label:"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Box in Boxy:"
+                        />
+                    </m:VBox>
+                    <m:VBox id="endlabelsEndBold">
+                        <m:Label text="" />
+                        <m:Label
+                            class=""
+                            text=""
+                        />
+                        <m:Label
+                            design="Bold"
+                            text="Blue"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text="Something"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text="Yes"
+                        />
+                    </m:VBox>
+                </m:HBox>
+            </layout:VerticalLayout>
+        </headerContent>
+        <sections>
+            <ObjectPageSection
+                showTitle="true"
+                titleUppercase="false"
+                title="Section 1"
+            >
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Unit of Measure"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:VBox
+                                alignItems="Center"
+                                justifyContent="Center"
+                            >
+                                <!-- <m:Title
+                                level="H1"
+                                    class="sapUiSmallMargin"
+                                    text="Unit of Measures"
+                                    titleStyle="Auto"
+                                /> -->
+                                <m:HBox
+                                    alignItems="Center"
+                                    justifyContent="Center"
+                                >
+                                    <table:Table
+                                        enableColumnReordering="false"
+                                        enableColumnFreeze="false"
+                                        id="UOM"
+                                        width="50rem"
+                                        class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
+                                        selectionMode="None"
+                                        
+                                        
+                                        rows="{/oum}"
+                                    >
+                                        <table:extension>
+                                            <m:OverflowToolbar style="Standard">
+                                                <m:Title
+                                                    id="title"
+                                                    text="Unit of Measures"
+                                                />
+                                            </m:OverflowToolbar>
+                                        </table:extension>
+
+                                        <table:rowMode>
+                                            <!-- since UI5 1.119 -->
+                                            <rowmodes:Auto
+                                                xmlns:rowmodes="sap.ui.table.rowmodes"
+                                                minRowCount="2"
+                                            />
+                                        </table:rowMode>
+
+                                        <table:columns>
+                                            <table:Column
+                                                id="firstColumn"
+                                                width="3rem"
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                resizable="false"
+                                            >
+                                                <m:Label text="Type" />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{type}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                id="secondColumn"
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="Right"
+                                                resizable="false"
+                                                
+                                            >
+                                                <m:Label
+                                                    text="Qty (PC)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{palletQty}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="End"
+                                                resizable="false"
+                                            >
+                                                <m:Label
+                                                    text="Length (MM)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{trpLength}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="End"
+                                                resizable="false"
+                                            >
+                                                <m:Label
+                                                    text="Width (MM)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{trpWidth}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="End"
+                                                resizable="false"
+                                            >
+                                                <m:Label
+                                                    text="Height (MM)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{trpHeight}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="End"
+                                                resizable="false"
+                                            >
+                                                <m:Label
+                                                    text="Gross Weight (KG)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{trpGWeight}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                        <table:columns>
+                                            <table:Column
+                                                showFilterMenuEntry="true"
+                                                showSortMenuEntry="true"
+                                                hAlign="End"
+                                                resizable="false"
+                                            >
+                                                <m:Label
+                                                    text="Net Weight (G)"
+                                                    wrapping="true"
+                                                />
+                                                <table:template>
+                                                    <m:Text
+                                                        text="{netWeight}"
+                                                        wrapping="false"
+                                                    />
+                                                </table:template>
+                                            </table:Column>
+                                        </table:columns>
+                                    </table:Table>
+                                       <m:Button
+                        class="sapUiSmallMarginBegin"
+                        id="editUOM"
+                        press=".editUOM"
+                        text="Edit"
+                    />
+                                </m:HBox>
+                            </m:VBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection
+                titleUppercase="false"
+                title="Section 2"
+            >
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Version History"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Table
+                                id="woiHistory"
+                                items="{    
+             path: 'woihistory>/woihistory' }"
+                            >
+                                <m:headerToolbar>
+                                    <m:Toolbar>
+                                        <m:Title text="{i18n>woiHistory}" />
+                                        <m:ToolbarSpacer />
+                                        <m:SearchField
+                                            width="50%"
+                                            search=".onFilterInvoices"
+                                        />
+                                    </m:Toolbar>
+                                </m:headerToolbar>
+
+                                <m:columns>
+                                    <m:Column
+                                        minScreenWidth="Small"
+                                        demandPopin="true"
+                                    >
+                                        <m:Text text="{i18n>TrayID}" />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="Status" />
+                                    </m:Column>
+                                    <m:Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="false"
+                                    >
+                                        <m:Text text="{i18n>Version}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="{i18n>RevisionDate}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="{i18n>CreatedBy}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Valid From" />
+                                    </m:Column>
+
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Valid To" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Work Instruction" />
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem
+                                        type="Navigation"
+                                        press=".onPress"
+                                    >
+                                        <m:cells>
+                                            <m:Text
+                                                text="{woihistory>trayID}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{woihistory>createdBy}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{woihistory>version}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'woihistory>revisionDate',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{woihistory>createdBy}"
+                                            />
+                                        </m:cells>
+
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'woihistory>validFrom',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'woihistory>validTo',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{woihistory>woiPdf}"
+                                            />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

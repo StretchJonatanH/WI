@@ -1,0 +1,60 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="true">
+	<Panel accessibleRole="Region">
+		<!-- <headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>invoiceListTitle}"/>
+				<ToolbarSpacer/>
+				<SearchField
+					width="50%"
+					search=".onFilterInvoices"/>
+			</Toolbar>
+		</headerToolbar>    -->
+		<Button press=".navDt" text="Dt"></Button>
+		<Table id="invoiceList" class="sapUiResponsiveMargin" width="auto" items="{    
+             path: 'suppliers>/Suppliers' }">
+             <headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>trayTableTitle}"/>
+						<ToolbarSpacer/>
+						<SearchField width="50%" search=".onFilterInvoices"/>
+					</Toolbar>
+				</headerToolbar> 
+				<columns>
+					<Column minScreenWidth="Small" demandPopin="true">
+						<Text text="{i18n>TrayID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>TrayDescription}"/>
+					</Column>
+					<Column minScreenWidth="Small" demandPopin="true">
+						<Text text="{i18n>Status}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="false">
+						<Text text="{i18n>Version}"/>
+					</Column>
+					<Column hAlign="End">
+						<Text text="{i18n>RevisionDate}"/>
+					</Column>
+                    	<Column hAlign="End">
+						<Text text="{i18n>CreatedBy}"/>
+					</Column>
+                    	<Column hAlign="End">
+						<Text text="{i18n>WorkInstructionPDF}"/>
+					</Column>
+				</columns>           
+				<items>
+					<ColumnListItem type="Navigation" press=".onPress">
+						<cells>
+                            <Text text="{suppliers>SupplierID}"/>
+						</cells>
+						<cells>
+							<Text text="{suppliers>CompanyName}"/>
+						</cells>
+						<cells>
+							<Text text="{suppliers>Country}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+		</Table>
+	</Panel>
+</mvc:View>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Z_TRAYFACTPROCESS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="TrayUom" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Meinh"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Meinh" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="AlternativeUnit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Umrez" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Numerator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Umren" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Denominator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ean11" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="EAN/UPC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Numtp" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="EAN category" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Laeng" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Length" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Breit" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Width" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hoehe" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Height" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meabm" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Volum" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Voleh" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Volume Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Brgew" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Gross Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gewei" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="Tray" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Colour" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Colourlabel" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxinbox" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Marketcountry" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ersda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="All_TrayUoms" Relationship="Z_TRAYFACTPROCESS_SRV.All_TrayUoms" FromRole="FromRole_All_TrayUoms" ToRole="ToRole_All_TrayUoms"/>
+                <NavigationProperty Name="All_Components" Relationship="Z_TRAYFACTPROCESS_SRV.All_Components" FromRole="FromRole_All_Components" ToRole="ToRole_All_Components"/>
+            </EntityType>
+            <EntityType Name="Language" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Spras"/>
+                </Key>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Laiso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Sptxt2" Type="Edm.String" Nullable="false" MaxLength="72" sap:unicode="false" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Component" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Traymatnr"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Traymatnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Statusdescr" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Manufacturer" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Manufacturerpartnumber" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Manufacturername" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vendorno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Supplier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vendorname" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vendormaterialno" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Vendor Mat. No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WorkInstruction" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Dokar"/>
+                    <PropertyRef Name="Doknr"/>
+                    <PropertyRef Name="Dokvr"/>
+                    <PropertyRef Name="Doktl"/>
+                </Key>
+                <Property Name="Dokar" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Doknr" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Dokvr" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Doc. Version" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Doktl" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Part" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Dwnam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="4096" sap:unicode="false" sap:label="URI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Url" Type="Edm.String" Nullable="false" MaxLength="4096" sap:unicode="false" sap:label="URI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Adatum" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Output date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Foldmethod" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SIFactory" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Special instruction, factory" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SIMarket" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Special instruction, market" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SILanguIso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DocStatus" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Dokar"/>
+                    <PropertyRef Name="Dokst"/>
+                </Key>
+                <Property Name="Dokar" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dostx" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Status text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="FoldMethod" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Characteristic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <ComplexType Name="UserPlant">
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="All_Components" sap:content-version="1">
+                <End Type="Z_TRAYFACTPROCESS_SRV.Tray" Multiplicity="1" Role="FromRole_All_Components"/>
+                <End Type="Z_TRAYFACTPROCESS_SRV.Component" Multiplicity="*" Role="ToRole_All_Components"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_All_Components">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_All_Components">
+                        <PropertyRef Name="Traymatnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="All_TrayUoms" sap:content-version="1">
+                <End Type="Z_TRAYFACTPROCESS_SRV.Tray" Multiplicity="1" Role="FromRole_All_TrayUoms"/>
+                <End Type="Z_TRAYFACTPROCESS_SRV.TrayUom" Multiplicity="*" Role="ToRole_All_TrayUoms"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_All_TrayUoms">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_All_TrayUoms">
+                        <PropertyRef Name="Matnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="Z_TRAYFACTPROCESS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="TrayUoms" EntityType="Z_TRAYFACTPROCESS_SRV.TrayUom" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Trays" EntityType="Z_TRAYFACTPROCESS_SRV.Tray" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Languages" EntityType="Z_TRAYFACTPROCESS_SRV.Language" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Components" EntityType="Z_TRAYFACTPROCESS_SRV.Component" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="Plants" EntityType="Z_TRAYFACTPROCESS_SRV.Plant" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkInstructions" EntityType="Z_TRAYFACTPROCESS_SRV.WorkInstruction" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DocStatuses" EntityType="Z_TRAYFACTPROCESS_SRV.DocStatus" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FoldMethods" EntityType="Z_TRAYFACTPROCESS_SRV.FoldMethod" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="All_TrayUomsSet" Association="Z_TRAYFACTPROCESS_SRV.All_TrayUoms" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Trays" Role="FromRole_All_TrayUoms"/>
+                    <End EntitySet="TrayUoms" Role="ToRole_All_TrayUoms"/>
+                </AssociationSet>
+                <AssociationSet Name="All_ComponentsSet" Association="Z_TRAYFACTPROCESS_SRV.All_Components" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Trays" Role="FromRole_All_Components"/>
+                    <End EntitySet="Components" Role="ToRole_All_Components"/>
+                </AssociationSet>
+                <FunctionImport Name="GetPlant" ReturnType="Z_TRAYFACTPROCESS_SRV.UserPlant" m:HttpMethod="GET">
+                    <Parameter Name="Uname" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="https://mhcsapecdci.mhc.molnlycke.net:44310/sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://mhcsapecdci.mhc.molnlycke.net:44310/sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

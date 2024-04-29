@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Z_TRAYDATA_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="TrayHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Baseuom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Speciality" Type="Edm.String" Nullable="false" MaxLength="17" sap:unicode="false" sap:label="Speciality Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productiontype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Traytype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Optimalcreated" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Laiso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dwnam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxinbox" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Piggybacking" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Piggy Backing" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pc" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Con" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trp" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pal" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Color" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorLabel" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Char20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorCodeLabelText" Type="Edm.String" Nullable="false" MaxLength="75" sap:unicode="false" sap:label="Char75" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContractedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validfrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid from" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Specinstr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Long description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="All_Descriptions" Relationship="Z_TRAYDATA_SRV.TrayHeader_Description" FromRole="FromRole_TrayHeader_Description" ToRole="ToRole_TrayHeader_Description"/>
+                <NavigationProperty Name="All_TrayBOMs" Relationship="Z_TRAYDATA_SRV.TrayHeader_TrayBOM" FromRole="FromRole_TrayHeader_TrayBOM" ToRole="ToRole_TrayHeader_TrayBOM"/>
+                <NavigationProperty Name="All_Plants" Relationship="Z_TRAYDATA_SRV.TrayHeader_Plants" FromRole="FromRole_TrayHeader_Plants" ToRole="ToRole_TrayHeader_Plants"/>
+            </EntityType>
+            <EntityType Name="Description" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Documentnumber"/>
+                </Key>
+                <Property Name="Documentnumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LanguageIso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Textline" Type="Edm.String" Nullable="false" MaxLength="132" sap:unicode="false" sap:label="Text Line" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InitTray" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="TrayDelta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Baseuom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Speciality" Type="Edm.String" Nullable="false" MaxLength="17" sap:unicode="false" sap:label="Speciality Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Productiontype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Traytype" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Char. Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Optimalcreated" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Laiso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dwnam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Boxinbox" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Piggybacking" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Piggy Backing" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pc" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Con" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trp" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pal" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Color" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorLabel" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Char20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorCodeLabelText" Type="Edm.String" Nullable="false" MaxLength="75" sap:unicode="false" sap:label="Char75" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContractedDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validfrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Valid from" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Changenr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Specinstr" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Long description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DescriptionDelta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Documentnumber"/>
+                    <PropertyRef Name="LanguageIso"/>
+                    <PropertyRef Name="Index"/>
+                </Key>
+                <Property Name="Documentnumber" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LanguageIso" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Lang. (ISO)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Textline" Type="Edm.String" Nullable="false" MaxLength="132" sap:unicode="false" sap:label="Text Line" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Index" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Text Index" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TrayBOMItemDelta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Stlnr"/>
+                    <PropertyRef Name="Component"/>
+                    <PropertyRef Name="Componentid"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Stlnr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="BOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Component" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Component" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trayversion" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Doc. version" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Layer" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="3-Byte field" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Componentid" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Pouchused" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Placedinoron" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserve" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document status" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="TrayBOM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Stlnr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="BOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="All_TrayBOMItems" Relationship="Z_TRAYDATA_SRV.TrayBOM_TrayBOMItem" FromRole="FromRole_TrayBOM_TrayBOMItem" ToRole="ToRole_TrayBOM_TrayBOMItem"/>
+            </EntityType>
+            <EntityType Name="TrayBOMItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Stlnr"/>
+                    <PropertyRef Name="Component"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stlnr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="BOM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Component" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Component" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trayversion" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Doc. version" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Layer" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="3-Byte field" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Componentid" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Pouchused" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Placedinoron" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserve" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Plants" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MATNR"/>
+                </Key>
+                <Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WERKS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="PlantName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MMSTA" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PlantStatus" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MTSTB" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="PlantStatusDescr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LVORM" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="DeletionIndicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="TrayHeader_TrayBOM" sap:content-version="1">
+                <End Type="Z_TRAYDATA_SRV.TrayHeader" Multiplicity="1" Role="FromRole_TrayHeader_TrayBOM"/>
+                <End Type="Z_TRAYDATA_SRV.TrayBOM" Multiplicity="*" Role="ToRole_TrayHeader_TrayBOM"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TrayHeader_TrayBOM">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TrayHeader_TrayBOM">
+                        <PropertyRef Name="Matnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TrayHeader_Plants" sap:content-version="1">
+                <End Type="Z_TRAYDATA_SRV.TrayHeader" Multiplicity="0..1" Role="FromRole_TrayHeader_Plants"/>
+                <End Type="Z_TRAYDATA_SRV.Plants" Multiplicity="*" Role="ToRole_TrayHeader_Plants"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TrayHeader_Plants">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TrayHeader_Plants">
+                        <PropertyRef Name="MATNR"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TrayHeader_Description" sap:content-version="1">
+                <End Type="Z_TRAYDATA_SRV.TrayHeader" Multiplicity="1" Role="FromRole_TrayHeader_Description"/>
+                <End Type="Z_TRAYDATA_SRV.Description" Multiplicity="*" Role="ToRole_TrayHeader_Description"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TrayHeader_Description">
+                        <PropertyRef Name="Matnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TrayHeader_Description">
+                        <PropertyRef Name="Documentnumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TrayBOM_TrayBOMItem" sap:content-version="1">
+                <End Type="Z_TRAYDATA_SRV.TrayBOM" Multiplicity="1" Role="FromRole_TrayBOM_TrayBOMItem"/>
+                <End Type="Z_TRAYDATA_SRV.TrayBOMItem" Multiplicity="*" Role="ToRole_TrayBOM_TrayBOMItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TrayBOM_TrayBOMItem">
+                        <PropertyRef Name="Matnr"/>
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TrayBOM_TrayBOMItem">
+                        <PropertyRef Name="Matnr"/>
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="Z_TRAYDATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="TrayHeaders" EntityType="Z_TRAYDATA_SRV.TrayHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Descriptions" EntityType="Z_TRAYDATA_SRV.Description" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InitTrays" EntityType="Z_TRAYDATA_SRV.InitTray" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TrayDeltaSet" EntityType="Z_TRAYDATA_SRV.TrayDelta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="DescriptionDeltaSet" EntityType="Z_TRAYDATA_SRV.DescriptionDelta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TrayBOMItemDeltaSet" EntityType="Z_TRAYDATA_SRV.TrayBOMItemDelta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TrayBOMs" EntityType="Z_TRAYDATA_SRV.TrayBOM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TrayBOMItems" EntityType="Z_TRAYDATA_SRV.TrayBOMItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantsSet" EntityType="Z_TRAYDATA_SRV.Plants" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="TrayHeader_Descriptions" Association="Z_TRAYDATA_SRV.TrayHeader_Description" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TrayHeaders" Role="FromRole_TrayHeader_Description"/>
+                    <End EntitySet="Descriptions" Role="ToRole_TrayHeader_Description"/>
+                </AssociationSet>
+                <AssociationSet Name="TrayBOM_TrayBOMItems" Association="Z_TRAYDATA_SRV.TrayBOM_TrayBOMItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TrayBOMs" Role="FromRole_TrayBOM_TrayBOMItem"/>
+                    <End EntitySet="TrayBOMItems" Role="ToRole_TrayBOM_TrayBOMItem"/>
+                </AssociationSet>
+                <AssociationSet Name="TrayHeader_TrayBOMs" Association="Z_TRAYDATA_SRV.TrayHeader_TrayBOM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TrayHeaders" Role="FromRole_TrayHeader_TrayBOM"/>
+                    <End EntitySet="TrayBOMs" Role="ToRole_TrayHeader_TrayBOM"/>
+                </AssociationSet>
+                <AssociationSet Name="TrayHeader_PlantsSet" Association="Z_TRAYDATA_SRV.TrayHeader_Plants" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TrayHeaders" Role="FromRole_TrayHeader_Plants"/>
+                    <End EntitySet="PlantsSet" Role="ToRole_TrayHeader_Plants"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://mhcsapecdci.mhc.molnlycke.net:44310/sap/opu/odata/sap/Z_TRAYDATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://mhcsapecdci.mhc.molnlycke.net:44310/sap/opu/odata/sap/Z_TRAYDATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

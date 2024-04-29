@@ -1,0 +1,22 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Dt" displayBlock="true">
+<Panel>
+<List id="tray" headerText="Products"
+		headerLevel="H2"
+		items="{
+			path: 'tray>/tray'
+		}" >
+		<StandardListItem
+			title="{Name}"
+			/>
+	</List>
+<List id="trayPing" headerText="Products"
+		headerLevel="H2">
+		<StandardListItem
+			title="{Doknr}"
+			/>
+	</List>
+	<Text id="textt"></Text>
+
+</Panel>
+
+</mvc:View>

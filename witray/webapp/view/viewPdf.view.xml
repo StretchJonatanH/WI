@@ -1,0 +1,9 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="witray.controller.viewPDF" height="100%">
+	<Page>
+    
+    <content>
+        <Button xmlns="sap.m" text="view PDF" id="button0" press="showPDF"/>
+    </content>
+    
+    </Page>
+</mvc:View>

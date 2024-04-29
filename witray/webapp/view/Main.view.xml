@@ -1,0 +1,19 @@
+<mvc:View controllerName="witray.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+         <content>
+        <Button xmlns="sap.m" text="view PDF" id="button0" press="showPDF"/>
+    </content>
+
+    <Table
+    id="table"
+                                        width="60rem"
+                                        class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
+                                        
+                                        
+                                        rows="{/oum}"
+                                    >
+    </Table>
+    </Page>
+</mvc:View>
