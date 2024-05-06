@@ -1,0 +1,398 @@
+<mvc:View
+    controllerName="workinstructiontray.controller.ComponentsDetail"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+<Shell>
+    <uxap:ObjectPageLayout
+        id="ObjectPageLayout"
+        upperCaseAnchorBar="false"
+        alwaysShowContentHeader="true"
+    >
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader
+                id="header"
+                objectTitle="Guaze Swab 10x20cm 17Th 24P XRD white 5pc - hc"
+                showTitleSelector="false"
+                titleSelectorPress="handleTitleSelectorPress"
+                objectSubtitle="ID: "
+            >
+                <uxap:breadcrumbs>
+                    <Breadcrumbs>
+                        <Link
+                            text="Back to Search"
+                            press="handleBackPress"
+                        />
+                    </Breadcrumbs>
+                </uxap:breadcrumbs>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+          <layout:VerticalLayout>
+                <HBox alignContent="End">
+              <Image class="sapUiMarginMediumEnd" width="10rem" height="10rem" src="https://sapui5.hana.ondemand.com/test-resources/sap/ui/documentation/sdk/images/HT-7777-large.jpg"></Image>
+                </HBox>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <HBox>
+                    <VBox
+                        id="labelsStart"
+                        direction="Column"
+                        alignItems="Start"
+                    >
+                        <Label
+                            class=""
+                            text=""
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text="Manufacturer:"
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text="Manufacturer Part:"
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text="Vendor:"
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text="Vendor Material Nr:"
+                        />
+                    </VBox>
+                    <VBox id="labelsEndBold">
+                        <Label
+                            class=""
+                            text=""
+                        />
+                        <Label
+                            design="Bold"
+                            text="Mhc"
+                        />
+                        <Label
+                            design="Bold"
+                            text=" {data>/deliverCountry}"
+                        />
+                        <Label
+                            design="Bold"
+                            text=" {data>/versionDate}"
+                        />
+                        <Label
+                            design="Bold"
+                            text=" {data>/createdBy}"
+                        />
+                    </VBox>
+                </HBox>
+            </layout:VerticalLayout>
+
+            <layout:VerticalLayout class="sapUiSmallBegin">
+                <layout:HorizontalLayout />
+
+                <layout:HorizontalLayout />
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <HBox>
+                    <VBox
+                        id="endlabelsStart"
+                        direction="Column"
+                        alignItems="Start"
+                    >
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text=" "
+                        />
+                        <Label
+                            class=""
+                            text=" "
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text=" "
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text=" "
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd"
+                            text=" "
+                        />
+                    </VBox>
+                    <VBox id="endlabelsEndBold">
+                        <Label text="" />
+                        <Label
+                            class=""
+                            text=" "
+                        />
+                        <Label
+                            design="Bold"
+                            text=" "
+                        />
+                        <Label
+                            design="Bold"
+                            text=" "
+                        />
+                        <Label
+                            design="Bold"
+                            text=" "
+                        />
+                    </VBox>
+                </HBox>
+            </layout:VerticalLayout>
+             <layout:VerticalLayout>
+                <VBox
+                        direction="Column"
+                        alignItems="Start"
+                    >
+                <HBox>
+                   
+                        <Label
+                            class="sapUiSmallMargin"
+                            text="Component ID"
+                        />
+                        <Label
+                            class="sapUiSmallMargin"
+                            text="Status"
+                        />
+                    </HBox>
+                    <HBox>
+                        
+                        <Label
+                            class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiSmallMarginBottom"
+                            design="Bold"
+                            text="6408804-41 -hc"
+                        />
+                        <Label
+                            class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiSmallMarginBottom"
+                            design="Bold"
+                            text="RE"
+                        />
+                   
+                </HBox>
+                 </VBox>
+            </layout:VerticalLayout>
+           
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection
+                showTitle="true"
+                titleUppercase="false"
+                title="Section 1"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection
+                        title="Local Language"
+                        titleUppercase="false"
+                    >
+                        <uxap:blocks>
+                            <layout:VerticalLayout
+                                class="sapUiLargeMarginBeginEnd"
+                            >
+                                <Title
+                                    level="Auto"
+                                    text="Local Language - Hc"
+                                    class="sapUiMediumMargin"
+                                />
+                            </layout:VerticalLayout>
+                            <layout:VerticalLayout
+                                class="sapUiLargeMarginBeginEnd"
+                            >
+                                <layout:HorizontalLayout>
+                                    <layout:VerticalLayout>
+                                        <Label
+                                            design="Standard"
+                                            text="Description"
+                                        />
+                                        <TextArea
+                                            id="localDesc"
+                                            height="6.5rem"
+                                            width="13rem"
+                                        />
+                                    </layout:VerticalLayout>
+                                    <Button
+                                        class="sapUiSmallMargin"
+                                        id="lolld"
+                                        press=".editLocalDesc"
+                                        text="Edit"
+                                    />
+                                </layout:HorizontalLayout>
+                            </layout:VerticalLayout>
+                            <layout:VerticalLayout
+                                class="sapUiLargeMarginBeginEnd"
+                            >
+                                <layout:HorizontalLayout>
+                                    <layout:VerticalLayout>
+                                        <Label
+                                            design="Standard"
+                                            text="Long Description"
+                                        />
+                                        <TextArea
+                                            id="localLongDesc"
+                                            height="6.5rem"
+                                            width="13rem"
+                                        />
+                                    </layout:VerticalLayout>
+                                    <Button
+                                        class="sapUiSmallMargin"
+                                        id="localLongButton"
+                                        press=".editLocalDesc"
+                                        text="Edit"
+                                    />
+                                </layout:HorizontalLayout>
+                            </layout:VerticalLayout>
+                            <layout:VerticalLayout class="sapUiSmallBegin">
+                                <!-- <Label
+                                    design="Standard"
+                                    text="Special Instructions Factory"
+                                />
+                                <TextArea
+                                    id="SIF"
+                                    height="90px"
+                                    width="180px"
+                                />
+                                <Button
+                                    id="editSIF"
+                                    press=".editSIF"
+                                    text="Edit"
+                                /> -->
+                            </layout:VerticalLayout>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection
+                titleUppercase="false"
+                title="Section 2"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection
+                        title="Version History"
+                        titleUppercase="false"
+                    >
+                        <uxap:blocks>
+                            <Table
+                                id="woiHistory"
+                                items="{    
+             path: 'woihistory>/woihistory' }"
+                            >
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="{i18n>woiHistory}" />
+                                        <ToolbarSpacer />
+                                        <SearchField
+                                            width="50%"
+                                            search=".onFilterInvoices"
+                                        />
+                                    </Toolbar>
+                                </headerToolbar>
+
+                                <columns>
+                                    <Column
+                                        minScreenWidth="Small"
+                                        demandPopin="true"
+                                    >
+                                        <Text text="{i18n>TrayID}" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Status" />
+                                    </Column>
+                                    <Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="false"
+                                    >
+                                        <Text text="{i18n>Version}" />
+                                    </Column>
+                                    <Column hAlign="End">
+                                        <Text text="{i18n>RevisionDate}" />
+                                    </Column>
+                                    <Column hAlign="End">
+                                        <Text text="{i18n>CreatedBy}" />
+                                    </Column>
+                                    <Column hAlign="End">
+                                        <Text text="Valid From" />
+                                    </Column>
+
+                                    <Column hAlign="End">
+                                        <Text text="Valid To" />
+                                    </Column>
+                                    <Column hAlign="End">
+                                        <Text text="Work Instruction" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem
+                                        type="Navigation"
+                                        press=".onPress"
+                                    >
+                                        <cells>
+                                            <Text text="{woihistory>trayID}" />
+                                        </cells>
+                                        <cells>
+                                            <Text
+                                                text="{woihistory>createdBy}"
+                                            />
+                                        </cells>
+                                        <cells>
+                                            <Text text="{woihistory>version}" />
+                                        </cells>
+                                        <cells>
+                                            <Text
+                                                text="{  
+                                                    path: 'woihistory>revisionDate',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </cells>
+                                        <cells>
+                                            <Text
+                                                text="{woihistory>createdBy}"
+                                            />
+                                        </cells>
+
+                                        <cells>
+                                            <Text
+                                                text="{  
+                                                    path: 'woihistory>validFrom',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </cells>
+                                        <cells>
+                                            <Text
+                                                text="{  
+                                                    path: 'woihistory>validTo',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </cells>
+                                        <cells>
+                                            <Text text="{woihistory>woiPdf}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+    </Shell>
+</mvc:View>

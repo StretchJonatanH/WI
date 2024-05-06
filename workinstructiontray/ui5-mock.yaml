@@ -24,6 +24,14 @@ server:
             url: http://devecdsso:443
             client: "004"
             destination: BusinessApplicationStudioSSO
+          - path: /sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV
+            url: http://devecd:443
+            client: "005"
+            destination: BusinessApplicationStudio_NOSSO
+          - path: /sap/opu/odata/sap/Z_TRAYDATA_SRV
+            url: http://devecd:443
+            client: "005"
+            destination: BusinessApplicationStudio_NOSSO
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -47,9 +55,9 @@ server:
             generateMockData: true
             metadataXmlPath: ./webapp/localService/metadata.xml
             mockdataRootPath: ./webapp/localService/data
-          - urlPath: /sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV
-            metadataPath: ./webapp/localService/Z_TRAYFACTPROCESS_SRV/metadata.xml
-            mockdataPath: ./webapp/localService/Z_TRAYFACTPROCESS_SRV/mockdata
+          - urlPath: /sap/opu/odata/sap/Z_TRAYDATA_SRV
+            metadataPath: ./webapp/localService/Z_TRAYDATA_SRV1/metadata.xml
+            mockdataPath: ./webapp/localService/Z_TRAYDATA_SRV1/mockdata
             generateMockData: true
         annotations: []
 builder:

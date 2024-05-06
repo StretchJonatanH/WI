@@ -17,7 +17,7 @@
         <headerTitle>
             <ObjectPageHeader
                 id="header"
-                objectTitle="Long title that wraps and goes over more lines"
+                objectTitle="ID - 97000914-001 **HC**"
                 showTitleSelector="false"
                 titleSelectorPress="handleTitleSelectorPress"
                 objectSubtitle="version: {data>/version}"
@@ -109,8 +109,8 @@
                 />
                 <m:TextArea
                     id="SIM"
-                    height="90px"
-                    width="180px"
+                    height="8rem"
+                    width="14rem"
                     liveChange="handleLiveChange"
                 />
                 <m:Button
@@ -126,8 +126,8 @@
                 />
                 <m:TextArea
                     id="SIF"
-                    height="90px"
-                    width="180px"
+                    height="8rem"
+                    width="14rem"
                 />
                 <m:Button
                     id="editSIF"
@@ -141,15 +141,15 @@
                     text="Wi Status"
                 />
                 <layout:HorizontalLayout>
-                	<m:Input
-				    id="inputStatus"
+                    <m:Input
+                        id="inputStatus"
                         class="sapUiSmallMarginBottom"
                         type="Text"
                         placeholder="Product"
                         enabled="true"
                         editable="false"
                     />
-                       <m:Button
+                    <m:Button
                         class="sapUiSmallMarginBegin"
                         id="editStatus"
                         press=".editStatus"
@@ -162,8 +162,8 @@
                     text="Folding Method"
                 />
                 <layout:HorizontalLayout>
-                  	<m:Input
-				    id="inputFold"
+                    <m:Input
+                        id="inputFold"
                         class="sapUiSmallMarginBottom"
                         type="Text"
                         placeholder="Product"
@@ -261,8 +261,6 @@
                                         width="50rem"
                                         class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
                                         selectionMode="None"
-                                        
-                                        
                                         rows="{/oum}"
                                     >
                                         <table:extension>
@@ -306,7 +304,6 @@
                                                 showSortMenuEntry="true"
                                                 hAlign="Right"
                                                 resizable="false"
-                                                
                                             >
                                                 <m:Label
                                                     text="Qty (PC)"
@@ -396,33 +393,57 @@
                                                 </table:template>
                                             </table:Column>
                                         </table:columns>
-                                        <table:columns>
-                                            <table:Column
-                                                showFilterMenuEntry="true"
-                                                showSortMenuEntry="true"
-                                                hAlign="End"
-                                                resizable="false"
-                                            >
-                                                <m:Label
-                                                    text="Net Weight (G)"
-                                                    wrapping="true"
-                                                />
-                                                <table:template>
-                                                    <m:Text
-                                                        text="{netWeight}"
-                                                        wrapping="false"
-                                                    />
-                                                </table:template>
-                                            </table:Column>
-                                        </table:columns>
                                     </table:Table>
-                                       <m:Button
-                        class="sapUiSmallMarginBegin"
-                        id="editUOM"
-                        press=".editUOM"
-                        text="Edit"
-                    />
+                                    <m:Button
+                                        class="sapUiSmallMarginBegin"
+                                        id="editUOM"
+                                        press=".editUOM"
+                                        text="Edit"
+                                    />
+                                         <table:Table
+                                    enableColumnReordering="false"
+                                    enableColumnFreeze="false"
+                                    width="7rem"
+                                    id="netWeight"
+                                    class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
+                                    selectionMode="None"
+                                    rows="{/oum}"
+                                > 
+                                 <table:extension>
+                                            <m:OverflowToolbar style="Standard">
+                                                <m:Title
+                                                    id="titleweight"
+                                                    text=""
+                                                />
+                                            </m:OverflowToolbar>
+                                        </table:extension>
+                                       <table:rowMode>
+                                            <!-- since UI5 1.119 -->
+                                            <rowmodes:Auto
+                                                xmlns:rowmodes="sap.ui.table.rowmodes"
+                                                minRowCount="2"
+                                            />
+                                        </table:rowMode>
+                                    <table:columns>
+                                        <table:Column
+                                            id="extraColumn"
+                                            showFilterMenuEntry="true"
+                                            showSortMenuEntry="true"
+                                            resizable="false"
+                                            hAlign="End"
+                                        >
+                                            <m:Label text="Net Weight" />
+                                            <table:template>
+                                                <m:Text
+                                                    text="{netWeight}"
+                                                    wrapping="false"
+                                                />
+                                            </table:template>
+                                        </table:Column>
+                                    </table:columns>
+                                </table:Table>
                                 </m:HBox>
+                           
                             </m:VBox>
                         </blocks>
                     </ObjectPageSubSection>
@@ -446,12 +467,13 @@
                             >
                                 <m:headerToolbar>
                                     <m:Toolbar>
-                                        <m:Title text="{i18n>woiHistory}" />
-                                        <m:ToolbarSpacer />
+                                        <m:Title text="WI History" />
                                         <m:SearchField
-                                            width="50%"
+                                            width="25%"
                                             search=".onFilterInvoices"
+                                            placeholder="ID"
                                         />
+                                        <m:ToolbarSpacer />
                                     </m:Toolbar>
                                 </m:headerToolbar>
 

@@ -1,0 +1,58 @@
+<mvc:View controllerName="workinstructiontray.controller.Components"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Panel>
+   <Button press=".navComponents" text="To Components"></Button>
+		<Table id="componentList" class="sapUiResponsiveMargin" width="auto">
+             <headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>trayTableTitle}"/>
+						
+						<SearchField width="12rem" placeholder="Component ID" search=".onFilterComponents"/>
+						<Button text="Go" class="sapUiMarginTiny" type="Emphasized" press="searchComp"></Button>
+						<ToolbarSpacer/>
+						
+					</Toolbar>
+				</headerToolbar> 
+				<columns>
+					<Column minScreenWidth="Small" demandPopin="true">
+						<Text text="{i18n>ComponentID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ComponentTitle}"/>
+					</Column>
+					<Column minScreenWidth="Small" demandPopin="true">
+						<Text text="{i18n>ComponentImage}"/>
+					</Column>
+					<Column minScreenWidth="Small" demandPopin="false">
+						<Text text="{i18n>ComponentVendor}"/>
+					</Column>
+					<Column hAlign="End">
+						<Text text="{i18n>ComponentVendorMaterialNr}"/>
+					</Column>
+                    	<Column hAlign="End">
+						<Text text="{i18n>ComponentManufacturer}"/>
+					</Column>
+                    	<Column hAlign="End">
+						<Text text="{i18n>ComponentManufacturerPart}"/>
+                    </Column>
+                    	<Column hAlign="End">
+						<Text text="{i18n>ComponenetStatus}"/>
+					</Column>
+				</columns>           
+				<items>
+					<ColumnListItem type="Navigation" press=".onPress">
+						<cells>
+                            <Text text="{suppliers>SupplierID}"/>
+						</cells>
+						<cells>
+							<Text text="{suppliers>CompanyName}"/>
+						</cells>
+						<cells>
+							<Text text="{suppliers>Country}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+		</Table>
+	</Panel>
+</mvc:View>

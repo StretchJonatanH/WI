@@ -1,4 +1,5 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="true">
+	<Shell>
 	<Panel accessibleRole="Region">
 		<!-- <headerToolbar>
 			<Toolbar>
@@ -10,13 +11,15 @@
 			</Toolbar>
 		</headerToolbar>    -->
 		<Button press=".navDt" text="Dt"></Button>
+		<Button press=".navComponents" text="Comp"></Button>
 		<Table id="invoiceList" class="sapUiResponsiveMargin" width="auto" items="{    
              path: 'suppliers>/Suppliers' }">
              <headerToolbar>
 					<Toolbar>
 						<Title text="{i18n>trayTableTitle}"/>
+						<SearchField width="15rem" search=".onFilterInvoices" placeholder="Tray ID"/>
+						<SearchField width="8rem" search=".onFilterInvoices" placeholder="Factory"/>
 						<ToolbarSpacer/>
-						<SearchField width="50%" search=".onFilterInvoices"/>
 					</Toolbar>
 				</headerToolbar> 
 				<columns>
@@ -57,4 +60,5 @@
 				</items>
 		</Table>
 	</Panel>
+	</Shell>
 </mvc:View>

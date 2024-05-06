@@ -221,7 +221,9 @@ export default class Detail extends Controller {
             ]
         })
         var table = <Table>this.byId("UOM");
+        var tableWeight = <Table>this.byId("netWeight");
         table.setModel(jModel);
+        tableWeight.setModel(jModel);
 
     }
     populateVHTable(): void {
@@ -522,7 +524,6 @@ export default class Detail extends Controller {
             { label: "Width (MM)", template: "Width" },
             { label: "Height (MM)", template: "Height" },
             { label: "Gross Weight (KG)", template: "GrossWeight" },
-            { label: "Net Weight (G)",  template: "GrossWeight"  },
         ];
 
         aColumns.forEach(function(column) {

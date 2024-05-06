@@ -31,6 +31,10 @@ export default class Main extends Controller {
         const router = (<Component>this.getOwnerComponent()).getRouter();
         router.navTo("RouteDt", {}, true);
     }
+    navComponents(): void {
+        const router = (<Component>this.getOwnerComponent()).getRouter();
+        router.navTo("RouteComponents", {}, true);
+    }
 
     //method for displaying PDF's
     showPDF(): void{

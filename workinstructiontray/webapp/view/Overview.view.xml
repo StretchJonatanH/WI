@@ -1,0 +1,11 @@
+
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="true">
+
+<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Work Instruction"
+    press="pressWI" frameType= "TwoByHalf">
+		<TileContent unit="EUR" footer="Current Quarter">
+			<ImageContent src="sap-icon://home-share" />
+		</TileContent>
+	</GenericTile>
+
+</mvc:View>

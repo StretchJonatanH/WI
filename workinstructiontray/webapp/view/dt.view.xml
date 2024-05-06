@@ -1,22 +1,31 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Dt" displayBlock="true">
 <Panel>
-<List id="tray" headerText="Products"
-		headerLevel="H2"
-		items="{
-			path: 'tray>/tray'
-		}" >
-		<StandardListItem
-			title="{Name}"
-			/>
-	</List>
-<List id="trayPing" headerText="Products"
-		headerLevel="H2">
-		<StandardListItem
-			title="{Doknr}"
-			/>
-	</List>
-	<Text id="textt"></Text>
+<Table
+    id="workInstructionTable"
+    items="{workInstructionModel>/WorkInstructions}"
+    headerText="Work Instructions"
+  >
+    <columns>
+      <Column>
+        <Label text="Document Number" />
+      </Column>
+      <Column>
+        <Label text="Document Version" />
+      </Column>
+      <Column>
+        <Label text="File Name" />
+      </Column>
+    </columns>
 
-</Panel>
-
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{workInstructionModel>Doknr}" />
+          <Text text="{workInstructionModel>Dokvr}" />
+          <Text text="{workInstructionModel>FileName}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+  </Panel>
 </mvc:View>
