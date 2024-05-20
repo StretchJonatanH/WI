@@ -18,7 +18,7 @@
         <uxap:headerTitle>
             <uxap:ObjectPageHeader
                 id="header"
-                objectTitle="Guaze Swab 10x20cm 17Th 24P XRD white 5pc - hc"
+                objectTitle="Implement"
                 showTitleSelector="false"
                 titleSelectorPress="handleTitleSelectorPress"
                 objectSubtitle="ID: "
@@ -36,7 +36,7 @@
         <uxap:headerContent>
           <layout:VerticalLayout>
                 <HBox alignContent="End">
-              <Image class="sapUiMarginMediumEnd" width="10rem" height="10rem" src="https://sapui5.hana.ondemand.com/test-resources/sap/ui/documentation/sdk/images/HT-7777-large.jpg"></Image>
+              <Image class="sapUiMarginMediumEnd" width="10rem" height="10rem" src=""></Image>
                 </HBox>
             </layout:VerticalLayout>
             <layout:VerticalLayout>

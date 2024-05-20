@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="false">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="workinstructiontray.controller.Main" displayBlock="false">
 <Shell>
 <!-- <Page> -->
 	<Panel accessibleRole="Region">
@@ -20,7 +20,11 @@
              <headerToolbar>
 					<Toolbar>
 						<Title text="{i18n>trayTableTitle}"/>
-						<SearchField id="PlantIDsearch" width="8rem" search=".onSearch" placeholder="Plant"/>
+						<!-- <SearchField id="PlantIDsearch" width="8rem" search=".onSearch" placeholder="Plant"/> -->
+						<Select id="plantSelect" width="8rem">
+							<core:Item key="CZ26" text="CZ26" />
+							<core:Item key="TH26" text="TH26" />
+						</Select>
 						<SearchField id="trayIDsearch" width="15rem" search=".onSearch" placeholder="Tray ID"/>
 						<Button
 											id="sortUsersButton"

@@ -1,11 +1,26 @@
-
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="true">
-
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Work Instruction"
-    press="pressWI" frameType= "TwoByHalf">
-		<TileContent unit="EUR" footer="Current Quarter">
-			<ImageContent src="sap-icon://home-share" />
-		</TileContent>
-	</GenericTile>
-
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    controllerName="your.namespace.OverviewController">
+    <Page title="Overview">
+        <content>
+            <f:GridContainer>
+                <f:items>
+                    <m:GenericTile header="Work Instructions" press=".onNavigate" tileContent="{nav>/pages/page1}">
+                        <m:TileContent footer="Detail about Page 1"/>
+                    </m:GenericTile>
+                    <m:GenericTile header="Components" press=".onNavigate" tileContent="{nav>/pages/page2}">
+                        <m:TileContent footer="Detail about Page 2"/>
+                    </m:GenericTile>
+                    <m:GenericTile header="Page 3" press=".onNavigate" tileContent="{nav>/pages/page3}">
+                        <m:TileContent footer="Detail about Page 3"/>
+                    </m:GenericTile>
+                    <m:GenericTile header="Page 4" press=".onNavigate" tileContent="{nav>/pages/page4}">
+                        <m:TileContent footer="Detail about Page 4"/>
+                    </m:GenericTile>
+                </f:items>
+            </f:GridContainer>
+        </content>
+    </Page>
 </mvc:View>

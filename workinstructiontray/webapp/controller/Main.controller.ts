@@ -17,6 +17,7 @@ import ListBinding from "sap/ui/model/ListBinding";
 import Message from "sap/ui/core/message/Message";
 import MessageToast from "sap/m/MessageToast";
 import formatter from "workinstructiontray/model/formatter";
+import Select from "sap/m/Select";
 /**
  * @namespace workinstructiontray.controller
  */
@@ -92,15 +93,18 @@ export default class Main extends Controller {
 
         // Get the search field value
         var sIDSearch = <SearchField>this.byId("trayIDsearch");
-        var sIDPlantSearch = <SearchField>this.byId("PlantIDsearch");
+        // var sIDPlantSearch = <SearchField>this.byId("PlantIDsearch");
+        var oIDPlantSelect = <Select>this.byId("plantSelect");
 
         const aFilters: Filter[] = [];
 
-        if (sIDSearch && sIDPlantSearch) {
+        if (sIDSearch && oIDPlantSelect) {
             const sSearched = sIDSearch;
-            const sPlantSearch = sIDPlantSearch;
+            const oPlantSearch = oIDPlantSelect;
             var sSearchValue = sSearched.getValue() || "";
-            var sPlantSearchValue = sPlantSearch.getValue() || "";
+            var oPlantSearchItem = oPlantSearch.getSelectedItem();
+            var sPlantSearchValue = oPlantSearchItem?.getText() || "";
+            
             
             if (!sSearchValue || !sPlantSearchValue) {
                 // If no search value, reset the table data or show a message

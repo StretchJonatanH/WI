@@ -77,6 +77,23 @@
                             class="sapUiSmallMarginEnd"
                             text="Created By:"
                         />
+                           <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text=""
+                        />
+                             <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Color"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Color Label:"
+                        />
+                        <m:Label
+                            class="sapUiSmallMarginEnd"
+                            text="Box in Box:"
+                        />
+
                     </m:VBox>
                     <m:VBox id="labelsEndBold">
                         <m:Label
@@ -89,15 +106,31 @@
                         />
                         <m:Label
                             design="Bold"
-                            text=" {WIDetail>/deliverCountry}"
+                            text="{WIDetail>/deliverCountry}"
                         />
                         <m:Label
                             design="Bold"
-                            text=" {WIDetail>/Adatum}"
+                            text="{path: 'WIDetail>/Adatum', formatter: '.formatter.formatDate' }"
                         />
                         <m:Label
                             design="Bold"
-                            text=" {WIDetail>/Dwnam}"
+                            text="{WIDetail>/Dwnam}"
+                        />
+                        <m:Label
+                            class=""
+                            text=""
+                        />
+                        <m:Label
+                            class=""
+                            text="{TrayModel>/Colour}"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text="{TrayModel>/Colourlabel}"
+                        />
+                        <m:Label
+                            design="Bold"
+                            text="{TrayModel>/Boxinbox}"
                         />
                     </m:VBox>
                 </m:HBox>
@@ -192,39 +225,148 @@
                             class=""
                             text=""
                         />
-                        <m:Label
-                            class="sapUiSmallMarginEnd"
-                            text="Color"
-                        />
-                        <m:Label
-                            class="sapUiSmallMarginEnd"
-                            text="Color Label:"
-                        />
-                        <m:Label
-                            class="sapUiSmallMarginEnd"
-                            text="Box in Boxy:"
-                        />
+                   
                     </m:VBox>
                     <m:VBox id="endlabelsEndBold">
                         <m:Label text="" />
                         <m:Label text="" />
-                        <m:Label
-                            class=""
-                            text="{TrayModel>/Colour}"
-                        />
-                        <m:Label
-                            design="Bold"
-                            text="{TrayModel>/Colourlabel}"
-                        />
-                        <m:Label
-                            design="Bold"
-                            text="{TrayModel>/Boxinbox}"
-                        />
+                  
                     </m:VBox>
                 </m:HBox>
             </layout:VerticalLayout>
         </headerContent>
         <sections>
+                 <ObjectPageSection
+                titleUppercase="false"
+                title="Section 2"
+            >
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Version History"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Table
+                                id="woiHistory"
+                                items="{WIHistory>/}"
+                            >
+                                <m:headerToolbar>
+                                    <m:Toolbar>
+                                        <m:Title text="WI History" />
+                                        <m:SearchField
+                                            id="searchVers"
+                                            width="15rem"
+                                            search="onSearchHistory"
+                                            placeholder="Version"
+                                        />
+                                        <m:ToolbarSpacer />
+                                    </m:Toolbar>
+                                </m:headerToolbar>
+
+                                <m:columns>
+                                    <m:Column
+                                        minScreenWidth="Small"
+                                        demandPopin="true"
+                                    >
+                                        <m:Text text="{i18n>TrayID}" />
+                                    </m:Column>
+                                    <m:Column>
+                                        <m:Text text="Status" />
+                                    </m:Column>
+                                    <m:Column
+                                        minScreenWidth="Tablet"
+                                        demandPopin="false"
+                                    >
+                                        <m:Text text="{i18n>Version}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="{i18n>RevisionDate}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="{i18n>CreatedBy}" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Valid From" />
+                                    </m:Column>
+
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Valid To" />
+                                    </m:Column>
+                                    <m:Column hAlign="End">
+                                        <m:Text text="Work Instruction" />
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem
+                                        type="Navigation"
+                                        press=".onPress"
+                                    >
+                                        <m:cells>
+                                            <m:Text
+                                                text="{WIHistory>Doknr}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{WIHistory>Dokst}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{WIHistory>Dokvr}"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'WIHistory>Adatum',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{WIHistory>Dwnam}"
+                                            />
+                                        </m:cells>
+
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'WIHistory>validFrom',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{  
+                                                    path: 'WIHistory>validTo',  
+                                                    type: 'sap.ui.model.type.Date',  
+                                                    formatOptions: {  
+                                                        pattern: 'yyyy.MM.dd'  
+                                                    }
+                                                    }"
+                                            />
+                                        </m:cells>
+                                        <m:cells>
+                                            <m:Text
+                                                text="{WIHistory>FileName}"
+                                            />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
             <ObjectPageSection
                 showTitle="true"
                 titleUppercase="false"
@@ -446,136 +588,7 @@
                 </subSections>
             </ObjectPageSection>
 
-            <ObjectPageSection
-                titleUppercase="false"
-                title="Section 2"
-            >
-                <subSections>
-                    <ObjectPageSubSection
-                        title="Version History"
-                        titleUppercase="false"
-                    >
-                        <blocks>
-                            <m:Table
-                                id="woiHistory"
-                                items="{WIHistory>/}"
-                            >
-                                <m:headerToolbar>
-                                    <m:Toolbar>
-                                        <m:Title text="WI History" />
-                                        <m:SearchField
-                                            width="25%"
-                                            search=".onFilterInvoices"
-                                            placeholder="ID"
-                                        />
-                                        <m:ToolbarSpacer />
-                                    </m:Toolbar>
-                                </m:headerToolbar>
-
-                                <m:columns>
-                                    <m:Column
-                                        minScreenWidth="Small"
-                                        demandPopin="true"
-                                    >
-                                        <m:Text text="{i18n>TrayID}" />
-                                    </m:Column>
-                                    <m:Column>
-                                        <m:Text text="Status" />
-                                    </m:Column>
-                                    <m:Column
-                                        minScreenWidth="Tablet"
-                                        demandPopin="false"
-                                    >
-                                        <m:Text text="{i18n>Version}" />
-                                    </m:Column>
-                                    <m:Column hAlign="End">
-                                        <m:Text text="{i18n>RevisionDate}" />
-                                    </m:Column>
-                                    <m:Column hAlign="End">
-                                        <m:Text text="{i18n>CreatedBy}" />
-                                    </m:Column>
-                                    <m:Column hAlign="End">
-                                        <m:Text text="Valid From" />
-                                    </m:Column>
-
-                                    <m:Column hAlign="End">
-                                        <m:Text text="Valid To" />
-                                    </m:Column>
-                                    <m:Column hAlign="End">
-                                        <m:Text text="Work Instruction" />
-                                    </m:Column>
-                                </m:columns>
-                                <m:items>
-                                    <m:ColumnListItem
-                                        type="Navigation"
-                                        press=".onPress"
-                                    >
-                                        <m:cells>
-                                            <m:Text
-                                                text="{WIHistory>Doknr}"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{WIHistory>Dokst}"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{WIHistory>Dokvr}"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{  
-                                                    path: 'WIHistory>Adatum',  
-                                                    type: 'sap.ui.model.type.Date',  
-                                                    formatOptions: {  
-                                                        pattern: 'yyyy.MM.dd'  
-                                                    }
-                                                    }"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{WIHistory>Dwnam}"
-                                            />
-                                        </m:cells>
-
-                                        <m:cells>
-                                            <m:Text
-                                                text="{  
-                                                    path: 'WIHistory>validFrom',  
-                                                    type: 'sap.ui.model.type.Date',  
-                                                    formatOptions: {  
-                                                        pattern: 'yyyy.MM.dd'  
-                                                    }
-                                                    }"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{  
-                                                    path: 'WIHistory>validTo',  
-                                                    type: 'sap.ui.model.type.Date',  
-                                                    formatOptions: {  
-                                                        pattern: 'yyyy.MM.dd'  
-                                                    }
-                                                    }"
-                                            />
-                                        </m:cells>
-                                        <m:cells>
-                                            <m:Text
-                                                text="{WIHistory>FileName}"
-                                            />
-                                        </m:cells>
-                                    </m:ColumnListItem>
-                                </m:items>
-                            </m:Table>
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-            </ObjectPageSection>
+   
         </sections>
     </ObjectPageLayout>
 </mvc:View>

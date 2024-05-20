@@ -34,6 +34,9 @@ import MessageBox from "sap/m/MessageBox";
 import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
 import formatter from "workinstructiontray/model/formatter";
+import ListBinding from "sap/ui/model/ListBinding";
+import Sorter from "sap/ui/model/Sorter";
+import SearchField from "sap/m/SearchField";
 
 /**
  * @namespace workinstructiontray.controller
@@ -53,8 +56,8 @@ var ButtonType = Library.ButtonType;
  * Choosing page creation
  */
 export default class Detail extends Controller {
+   
     public formatter = formatter;
-
     private dialog: Dialog;
     private oODataModel: ODataModel;
     private oJSONModel: JSONModel;
@@ -62,7 +65,7 @@ export default class Detail extends Controller {
     private oJSONModelHistory: JSONModel;
 
     public onInit(): void {
-
+        
         //init model and data
         const router = (<Component>this.getOwnerComponent()).getRouter();
         router.getRoute("RouteDetail")?.attachPatternMatched(this._onObjectMatched, this);
@@ -98,6 +101,7 @@ export default class Detail extends Controller {
                 success: (oData: any) => {
                     // Set the data to the JSON model for the detail view
                     this.oJSONModel.setData(oData);
+                    this.applySorting("Dokvr", true);
                 },
                 error: (oError: any) => {
                     console.error("Error fetching data:", oError.message);
@@ -548,6 +552,34 @@ export default class Detail extends Controller {
 
     }
     Clipboard(row: any): any {
+
+    }
+    private applySorting(property: string, bSort: boolean): void {
+        const oTable: Table = this.byId("woiHistory") as Table;
+        const oBinding = oTable.getBinding("items");
+
+        if (oBinding instanceof ListBinding) {
+            const oSorter = new Sorter(property, bSort);
+            oBinding.sort(oSorter);
+        } else {
+            console.error("Binding is not of type ListBinding and cannot be sorted.");
+        }
+    }
+    onSearchHistory(oEvent: Event): void {
+
+        const oTable = <Table> this.byId("woiHistory"); 
+        const oSearch = <SearchField>this.byId("searchVers");
+        const oBinding: ListBinding = oTable.getBinding("items") as ListBinding;
+
+        if(oTable && oSearch){
+            var sSearch = oSearch.getValue();
+            const oFilter = new Filter("Dokvr", FilterOperator.Contains, sSearch);
+            oBinding.filter([oFilter]);
+            
+        }else {
+            oBinding.filter([]);
+        }
+
 
     }
 }
