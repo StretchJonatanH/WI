@@ -1,5 +1,6 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="true">
-	<Shell>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="workinstructiontray.controller.Main" displayBlock="false">
+<Shell>
+<!-- <Page> -->
 	<Panel accessibleRole="Region">
 		<!-- <headerToolbar>
 			<Toolbar>
@@ -12,13 +13,27 @@
 		</headerToolbar>    -->
 		<Button press=".navDt" text="Dt"></Button>
 		<Button press=".navComponents" text="Comp"></Button>
-		<Table id="invoiceList" class="sapUiResponsiveMargin" width="auto" items="{    
-             path: 'suppliers>/Suppliers' }">
+		<Button id="cancelBusy" press=".cancelBusyTable" visible="false" text="Search again"></Button>
+		<ScrollContainer height='58rem' vertical='true'>
+		<Table id="TrayIDs"  growing="false" class="sapUiResponsiveMargin" width="auto" items="{ path : 'WIModel>/WorkInstructions'}" 
+		noDataText="Search for valid ID">
              <headerToolbar>
 					<Toolbar>
 						<Title text="{i18n>trayTableTitle}"/>
-						<SearchField width="15rem" search=".onFilterInvoices" placeholder="Tray ID"/>
-						<SearchField width="8rem" search=".onFilterInvoices" placeholder="Factory"/>
+						<SearchField id="PlantIDsearch" width="8rem" search=".onSearch" placeholder="Plant"/>
+						<SearchField id="trayIDsearch" width="15rem" search=".onSearch" placeholder="Tray ID"/>
+						<Button
+											id="sortUsersButton"
+											text="Sort Status"
+											icon="sap-icon://sort"
+											tooltip="{i18n>sortButtonText}"
+											press="onSortStatus"/>
+											<Button
+											id="sortStatus"
+											text="Sort Version"
+											icon="sap-icon://sort"
+											tooltip="{i18n>sortButtonText}"
+											press="onSortVersion"/>
 						<ToolbarSpacer/>
 					</Toolbar>
 				</headerToolbar> 
@@ -32,8 +47,8 @@
 					<Column minScreenWidth="Small" demandPopin="true">
 						<Text text="{i18n>Status}"/>
 					</Column>
-					<Column minScreenWidth="Tablet" demandPopin="false">
-						<Text text="{i18n>Version}"/>
+					<Column minScreenWidth="Tablet"  demandPopin="false">
+						<Text  text="{i18n>Version}"/>
 					</Column>
 					<Column hAlign="End">
 						<Text text="{i18n>RevisionDate}"/>
@@ -48,17 +63,32 @@
 				<items>
 					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
-                            <Text text="{suppliers>SupplierID}"/>
+                            <Text text="{WIModel>Doknr}"/>
 						</cells>
 						<cells>
-							<Text text="{suppliers>CompanyName}"/>
+							<Text text="{WIModel>Maktx}"/>
 						</cells>
 						<cells>
-							<Text text="{suppliers>Country}"/>
+							<Text text="{WIModel>Dokst}"/>
+						</cells>
+						<cells>
+							<Text text="{WIModel>Dokvr}"/>
+						</cells>
+						<cells>
+							<Text text="{path: 'WIModel>Adatum', formatter: '.formatter.formatDate' }" />
+						</cells>
+						<cells>
+							<Text text="{WIModel>Dwnam}"/>
+						</cells>
+						<cells>
+							<Link text="{WIModel>FileName}" href="{WIModel>Url}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
 		</Table>
+		</ScrollContainer>
 	</Panel>
+	<!-- </Page> -->
 	</Shell>
+	
 </mvc:View>

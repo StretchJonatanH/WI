@@ -45,13 +45,17 @@ server:
             client: '004'
             destination: BusinessApplicationStudioSSO
           - path: /sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV
-            url: http://devecd:443
+            url: http://devecdsso:443
             client: '005'
-            destination: BusinessApplicationStudio_NOSSO
+            destination: BusinessApplicationStudioSSO
           - path: /sap/opu/odata/sap/Z_TRAYDATA_SRV
             url: http://devecd:443
             client: '005'
             destination: BusinessApplicationStudio_NOSSO
+          - path: /sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV
+            url: http://devecdsso:443
+            client: '005'
+            destination: BusinessApplicationStudioSSO
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

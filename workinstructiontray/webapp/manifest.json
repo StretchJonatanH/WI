@@ -16,30 +16,21 @@
             "toolsId": "df135a7e-041f-4784-bffa-f7c73db8362c"
         },
         "dataSources": {
-            "mainService": {
-                "uri": "/V2/Northwind/Northwind.svc/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            },
-            "Z_TRAYFACTPROCESS_SRV1": {
-                "uri": "/sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/Z_TRAYFACTPROCESS_SRV1/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            },
             "Z_TRAYDATA_SRV1": {
                 "uri": "/sap/opu/odata/sap/Z_TRAYDATA_SRV",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/Z_TRAYDATA_SRV1/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "Z_TRAYFACTPROCESS_SRV": {
+                "uri": "/sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/Z_TRAYFACTPROCESS_SRV/metadata.xml",
                     "odataVersion": "2.0"
                 }
             }
@@ -87,18 +78,8 @@
                     "bundleName": "workinstructiontray.i18n.i18n"
                 }
             },
-            "suppliers": {
-                "dataSource": "mainService",
-                "preload": true,
-                "settings": {}
-            },
-            "products": {
-                "dataSource": "mainService",
-                "preload": true,
-                "settings": {}
-            },
-            "Z_TRAYFACTPROCESS_SRV1": {
-                "dataSource": "Z_TRAYFACTPROCESS_SRV1",
+            "Z_TRAYDATA_SRV1": {
+                "dataSource": "Z_TRAYDATA_SRV1",
                 "preload": true,
                 "settings": {
                     "defaultBindingMode": "TwoWay",
@@ -109,8 +90,8 @@
                     }
                 }
             },
-            "Z_TRAYDATA_SRV1": {
-                "dataSource": "Z_TRAYDATA_SRV1",
+            "Z_TRAYFACTPROCESS_SRV": {
+                "dataSource": "Z_TRAYFACTPROCESS_SRV",
                 "preload": true,
                 "settings": {
                     "defaultBindingMode": "TwoWay",
@@ -149,7 +130,7 @@
                 },
                 {
                     "name": "RouteDetail",
-                    "pattern": "{tPath}/Products",
+                    "pattern": "WI/{Doknr}/{Dokar}/{Dokvr}/{Doktl}",
                     "target": [
                         "DetailTarget"
                     ]

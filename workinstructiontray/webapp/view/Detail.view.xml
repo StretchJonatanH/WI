@@ -17,10 +17,10 @@
         <headerTitle>
             <ObjectPageHeader
                 id="header"
-                objectTitle="ID - 97000914-001 **HC**"
+                objectTitle="{WIDetail>/Doknr}"
                 showTitleSelector="false"
                 titleSelectorPress="handleTitleSelectorPress"
-                objectSubtitle="version: {data>/version}"
+                objectSubtitle="version: {WIDetail>/Dokvr}"
             >
                 <actions>
                     <m:HBox alignItems="End">
@@ -81,7 +81,7 @@
                     <m:VBox id="labelsEndBold">
                         <m:Label
                             design="Bold"
-                            text=" {data>/trayDescription}"
+                            text=" {WIDetail>/Maktx}"
                         />
                         <m:Label
                             class=""
@@ -89,15 +89,15 @@
                         />
                         <m:Label
                             design="Bold"
-                            text=" {data>/deliverCountry}"
+                            text=" {WIDetail>/deliverCountry}"
                         />
                         <m:Label
                             design="Bold"
-                            text=" {data>/versionDate}"
+                            text=" {WIDetail>/Adatum}"
                         />
                         <m:Label
                             design="Bold"
-                            text=" {data>/createdBy}"
+                            text=" {WIDetail>/Dwnam}"
                         />
                     </m:VBox>
                 </m:HBox>
@@ -111,12 +111,7 @@
                     id="SIM"
                     height="8rem"
                     width="14rem"
-                    liveChange="handleLiveChange"
-                />
-                <m:Button
-                    id="editSIM"
-                    press=".editSIM"
-                    text="Edit"
+                    value="{WIDetail>/SIMarket}"
                 />
             </layout:VerticalLayout>
             <layout:VerticalLayout class="sapUiSmallBegin">
@@ -128,6 +123,7 @@
                     id="SIF"
                     height="8rem"
                     width="14rem"
+                    value="{WIDetail>/SIFactory}"
                 />
                 <m:Button
                     id="editSIF"
@@ -148,6 +144,8 @@
                         placeholder="Product"
                         enabled="true"
                         editable="false"
+                        value="{WIDetail>/Dokst}"
+                        
                     />
                     <m:Button
                         class="sapUiSmallMarginBegin"
@@ -169,6 +167,7 @@
                         placeholder="Product"
                         enabled="true"
                         editable="false"
+                        value="{WIDetail>/Foldmethod}"
                     />
                     <m:Button
                         class="sapUiSmallMarginBegin"
@@ -208,21 +207,18 @@
                     </m:VBox>
                     <m:VBox id="endlabelsEndBold">
                         <m:Label text="" />
+                        <m:Label text="" />
                         <m:Label
                             class=""
-                            text=""
+                            text="{TrayModel>/Colour}"
                         />
                         <m:Label
                             design="Bold"
-                            text="Blue"
+                            text="{TrayModel>/Colourlabel}"
                         />
                         <m:Label
                             design="Bold"
-                            text="Something"
-                        />
-                        <m:Label
-                            design="Bold"
-                            text="Yes"
+                            text="{TrayModel>/Boxinbox}"
                         />
                     </m:VBox>
                 </m:HBox>
@@ -261,7 +257,7 @@
                                         width="50rem"
                                         class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
                                         selectionMode="None"
-                                        rows="{/oum}"
+                                        rows="{TrayModel>/All_TrayUoms/results}"
                                     >
                                         <table:extension>
                                             <m:OverflowToolbar style="Standard">
@@ -291,7 +287,7 @@
                                                 <m:Label text="Type" />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{type}"
+                                                        text="{TrayModel>Meinh}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -311,7 +307,7 @@
                                                 />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{palletQty}"
+                                                        text="{TrayModel>Umren}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -330,7 +326,7 @@
                                                 />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{trpLength}"
+                                                        text="{TrayModel>Laeng}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -349,7 +345,7 @@
                                                 />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{trpWidth}"
+                                                        text="{TrayModel>Breit}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -368,7 +364,7 @@
                                                 />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{trpHeight}"
+                                                        text="{TrayModel>Hoehe}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -387,7 +383,7 @@
                                                 />
                                                 <table:template>
                                                     <m:Text
-                                                        text="{trpGWeight}"
+                                                        text="{TrayModel>Brgew}"
                                                         wrapping="false"
                                                     />
                                                 </table:template>
@@ -407,7 +403,7 @@
                                     id="netWeight"
                                     class="sapUiSmallMargin sapUiMediumMarginBottom sapUiResponsiveContentPadding"
                                     selectionMode="None"
-                                    rows="{/oum}"
+                                    rows="{TrayModel>/All_TrayUoms/results}"
                                 > 
                                  <table:extension>
                                             <m:OverflowToolbar style="Standard">
@@ -462,8 +458,7 @@
                         <blocks>
                             <m:Table
                                 id="woiHistory"
-                                items="{    
-             path: 'woihistory>/woihistory' }"
+                                items="{WIHistory>/}"
                             >
                                 <m:headerToolbar>
                                     <m:Toolbar>
@@ -517,23 +512,23 @@
                                     >
                                         <m:cells>
                                             <m:Text
-                                                text="{woihistory>trayID}"
+                                                text="{WIHistory>Doknr}"
                                             />
                                         </m:cells>
                                         <m:cells>
                                             <m:Text
-                                                text="{woihistory>createdBy}"
+                                                text="{WIHistory>Dokst}"
                                             />
                                         </m:cells>
                                         <m:cells>
                                             <m:Text
-                                                text="{woihistory>version}"
+                                                text="{WIHistory>Dokvr}"
                                             />
                                         </m:cells>
                                         <m:cells>
                                             <m:Text
                                                 text="{  
-                                                    path: 'woihistory>revisionDate',  
+                                                    path: 'WIHistory>Adatum',  
                                                     type: 'sap.ui.model.type.Date',  
                                                     formatOptions: {  
                                                         pattern: 'yyyy.MM.dd'  
@@ -543,14 +538,14 @@
                                         </m:cells>
                                         <m:cells>
                                             <m:Text
-                                                text="{woihistory>createdBy}"
+                                                text="{WIHistory>Dwnam}"
                                             />
                                         </m:cells>
 
                                         <m:cells>
                                             <m:Text
                                                 text="{  
-                                                    path: 'woihistory>validFrom',  
+                                                    path: 'WIHistory>validFrom',  
                                                     type: 'sap.ui.model.type.Date',  
                                                     formatOptions: {  
                                                         pattern: 'yyyy.MM.dd'  
@@ -561,7 +556,7 @@
                                         <m:cells>
                                             <m:Text
                                                 text="{  
-                                                    path: 'woihistory>validTo',  
+                                                    path: 'WIHistory>validTo',  
                                                     type: 'sap.ui.model.type.Date',  
                                                     formatOptions: {  
                                                         pattern: 'yyyy.MM.dd'  
@@ -571,7 +566,7 @@
                                         </m:cells>
                                         <m:cells>
                                             <m:Text
-                                                text="{woihistory>woiPdf}"
+                                                text="{WIHistory>FileName}"
                                             />
                                         </m:cells>
                                     </m:ColumnListItem>

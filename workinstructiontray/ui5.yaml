@@ -18,10 +18,10 @@ server:
         backend:
           - path: /V2
             url: https://services.odata.org
-          - path: /sap
-            url: http://devecd:443
+          - path: /sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV
+            url: http://devecdsso:443
             client: '005'
-            destination: BusinessApplicationStudio_NOSSO
+            destination: BusinessApplicationStudioSSO
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

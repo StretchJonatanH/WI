@@ -114,6 +114,12 @@
                 <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </ComplexType>
+            <ComplexType Name="WIReturn">
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokvr" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Doc. Version" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dokst" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Document Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
             <Association Name="All_Components" sap:content-version="1">
                 <End Type="Z_TRAYFACTPROCESS_SRV.Tray" Multiplicity="1" Role="FromRole_All_Components"/>
                 <End Type="Z_TRAYFACTPROCESS_SRV.Component" Multiplicity="*" Role="ToRole_All_Components"/>
@@ -157,6 +163,19 @@
                 </AssociationSet>
                 <FunctionImport Name="GetPlant" ReturnType="Z_TRAYFACTPROCESS_SRV.UserPlant" m:HttpMethod="GET">
                     <Parameter Name="Uname" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SaveWI" ReturnType="Z_TRAYFACTPROCESS_SRV.WIReturn" m:HttpMethod="POST">
+                    <Parameter Name="Matnr" Type="Edm.String" Mode="In" MaxLength="18" sap:label="Material"/>
+                    <Parameter Name="ReasonForRejectionChange" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Change Reason For Rejection"/>
+                    <Parameter Name="Werks" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="DIFlag" Type="Edm.Boolean" Mode="In" sap:label="Becoming DI"/>
+                    <Parameter Name="Dokst" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Document Status"/>
+                    <Parameter Name="MarketText" Type="Edm.String" Mode="In" sap:label="Market Text"/>
+                    <Parameter Name="Dokvr" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Doc. Version"/>
+                    <Parameter Name="ReasonForRejection" Type="Edm.String" Mode="In" sap:label="Reason For Rejection"/>
+                    <Parameter Name="PdfLink" Type="Edm.String" Mode="In" sap:label="PDF Link"/>
+                    <Parameter Name="FoldingMethod" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Folding Method"/>
+                    <Parameter Name="FactoryText" Type="Edm.String" Mode="In" sap:label="Factory Text"/>
                 </FunctionImport>
             </EntityContainer>
             <atom:link rel="self" href="https://mhcsapecdci.mhc.molnlycke.net:44310/sap/opu/odata/sap/Z_TRAYFACTPROCESS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

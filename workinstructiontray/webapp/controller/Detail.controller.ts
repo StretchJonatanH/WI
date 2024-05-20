@@ -1,9 +1,16 @@
+interface RouteArguments {
+    Doknr: string;
+    Dokar: string;
+    Dokvr: string;
+    Doktl: string;
+  }
+
 import ObjectListItem from "sap/m/ObjectListItem";
 import Component from "../Component";
 import Controller from "sap/ui/core/mvc/Controller";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import History from "sap/ui/core/routing/History";
-import { Route$PatternMatchedEvent } from "sap/ui/core/routing/Route";
+import { Route$MatchedEventParameters, Route$PatternMatchedEvent } from "sap/ui/core/routing/Route";
 import Event from "sap/ui/base/Event";
 import View from "sap/ui/core/mvc/View";
 import Select from "sap/m/Select";
@@ -21,6 +28,12 @@ import Label from "sap/m/Label";
 import Library from "sap/m/library";
 import Element from "sap/ui/core/Element";
 import Column from "sap/ui/table/Column";
+import ODataModel from "sap/ui/model/odata/v2/ODataModel";
+import Route from "sap/ui/vbm/Route";
+import MessageBox from "sap/m/MessageBox";
+import Filter from "sap/ui/model/Filter";
+import FilterOperator from "sap/ui/model/FilterOperator";
+import formatter from "workinstructiontray/model/formatter";
 
 /**
  * @namespace workinstructiontray.controller
@@ -28,6 +41,7 @@ import Column from "sap/ui/table/Column";
 
 var DialogType = Library.DialogType;
 var ButtonType = Library.ButtonType;
+
 /**
  * Lock all the controls.
  *  edit button to unlock them.
@@ -39,108 +53,98 @@ var ButtonType = Library.ButtonType;
  * Choosing page creation
  */
 export default class Detail extends Controller {
+    public formatter = formatter;
 
     private dialog: Dialog;
+    private oODataModel: ODataModel;
+    private oJSONModel: JSONModel;
+    private oJSONModelTray: JSONModel;
+    private oJSONModelHistory: JSONModel;
 
     public onInit(): void {
 
+        //init model and data
         const router = (<Component>this.getOwnerComponent()).getRouter();
         router.getRoute("RouteDetail")?.attachPatternMatched(this._onObjectMatched, this);
 
-        //create model
-        //display model in page
-        var jModel = new JSONModel();
-        jModel.setData({
-            id: "97000410-00",
-            version: "00",
-            trayDescription: "Customized Efficient surgery tray",
-            deliverCountry: "DK",
-            versionDate: "2024-19-24",
-            createdBy: "CZCSAZO",
-            specialInstructionMarket: "Please send us WI before the first production",
-            specialInstructionFactory: "Postal WI: CC2310835-00-, CC2310835-05-, CC2310835-00-",
-            foldingMethod: "FE",
-            WIStatus: "AQ rel TO PRODTN",
-            colour: "Orange",
-            colourLabel: "Side/Bottom Label",
-            boxInBox: "Yes"
-        })
-        this.getView()?.setModel(jModel, "data");
+        this.oODataModel = this.getOwnerComponent()?.getModel("Z_TRAYFACTPROCESS_SRV") as ODataModel;
+        this.oJSONModel = new JSONModel();
+        this.oJSONModelTray = new JSONModel();
+        this.oJSONModelHistory = new JSONModel();
 
-        this.getView()?.getModel();
+        this.getView()?.setModel(this.oJSONModel, "WIDetail");
+        this.getView()?.setModel(this.oJSONModelTray, "TrayModel");
+        this.getView()?.setModel(this.oJSONModelHistory, "WIHistory");
 
-        //set select 
-        var oSelectFolding = <Select>this.byId("selectStatus");
-        var oSelectStatus = <Select>this.byId("selectFold");
+        // Attach the route pattern matched event to capture the workInstructionId parameter
+        const oRouter = (<Component>this.getOwnerComponent()).getRouter();
+        oRouter.getRoute("RouteDetail")?.attachPatternMatched(this._onPatternMatched, this);
 
-        var jSelectStatus = new JSONModel();
-        jSelectStatus.setData({
-            "status": "999",
-            "statuses": [{
-                "StatusId": 10,
-                "Name": "FE"
-            },
-            {
-                "StatusId": 11,
-                "Name": "WN"
-            },
-            {
-                "StatusId": 12,
-                "Name": "WP"
-            },
-            {
-                "StatusId": 13,
-                "Name": "AQ"
-            },
+    }
+    _onPatternMatched(oEvent: Route$PatternMatchedEvent): void {
+        // Extract the workInstructionId parameter from the route
+        const sWorkInstructionId = oEvent.getParameter("arguments") as RouteArguments;
 
-            ]
-        });
-        this.getView()?.setModel(jSelectStatus, "statuses");
+        if(sWorkInstructionId.hasOwnProperty("Doknr") && sWorkInstructionId.hasOwnProperty("Dokar") && sWorkInstructionId.hasOwnProperty("Dokvr") && sWorkInstructionId.hasOwnProperty("Doktl")){
+            
+            // Find DOKAR, DOKNR, DOKVR, DOKTL for request
+            const Doknr = sWorkInstructionId.Doknr;
+            const Dokar = sWorkInstructionId.Dokar;
+            const Dokvr = sWorkInstructionId.Dokvr;
+            const Doktl = sWorkInstructionId.Doktl;
 
-        var jSelectFolds = new JSONModel();
-        jSelectFolds.setData({
-            "fold": "999",
-            "folds": [{
-                "foldId": 10,
-                "Name": "Fold One"
-            },
-            {
-                "foldId": 11,
-                "Name": "Fold two"
-            },
-            {
-                "foldId": 12,
-                "Name": "Fold three"
-            },
-            {
-                "foldId": 13,
-                "Name": "Fold four"
-            },
+            // Fetch the data using the OData model and set it to the JSON model
+            this.oODataModel.read(`/WorkInstructions(Dokar='${Dokar}',Doknr='${Doknr}',Dokvr='${Dokvr}',Doktl='${Doktl}')`, {
+                success: (oData: any) => {
+                    // Set the data to the JSON model for the detail view
+                    this.oJSONModel.setData(oData);
+                },
+                error: (oError: any) => {
+                    console.error("Error fetching data:", oError.message);
+                }
+            })
 
-            ]
-        });
-        this.getView()?.setModel(jSelectFolds, "folds");
+             // Trays (color, box in box etc request)
+            // const aFilters = [new Filter("Doknr", FilterOperator.StartsWith, sSearchValue)];
 
-        // //folds
-        // oSelectFolding.setEditable(false);
-        // oSelectStatus.setEditable(false);
+            this.oODataModel.read(`/Trays('${Doknr}')`, {
+                urlParameters: {
+                    $expand: "All_TrayUoms"
+                },
+                success: (oData: any) => {
 
-        //ppoulate tables
-        this.populateTable();
-        this.populateVHTable();
+                    let uoms = oData.All_TrayUoms.results;
+                    let UoMFiltered = uoms.filter((obj: { Meinh: string; }) => {
+                        return obj.Meinh === "PAL" || obj.Meinh === "TRP"
+                      });
+                      oData.All_TrayUoms.results = UoMFiltered;
+                    // Store filtered WorkInstruction data in the JSON model
+                    this.oJSONModelTray.setData(oData);
 
-        //textAreas
-        this.toggleTextAreaSIM();
-        this.toggleTextAreaSIF()
-
-
-        // var oModel = (<Component>this.getOwnerComponent()).getModel("TrayHeaders");
-
-        // //får tag i arrayen. Set specific data till modelen
-        // var Trayheader = (<Component>this.getOwnerComponent()).getModel("TrayHeaders")?.getProperty("/TrayHeader")[0];
-        // this.getView()?.bindElement(Trayheader); // funkar ej, kanske måste ha en path
-        // this.getView()?.setModel(Trayheader, "model");
-
+               
+                },
+                error: (oError: any) => {
+                    MessageBox.warning("Error fetching data: " + oError.message)
+                    this.oJSONModelTray.setData({ WorkInstructions: [] }); // Clear the table if an error occurs
+                   
+                }
+            });
+            
+            //Version History
+            const aFilters = [new Filter("Doknr", FilterOperator.EQ, Doknr)];
+            
+            this.oODataModel.read('/WorkInstructions', {
+                filters: aFilters,
+                success: (oData: any) => {
+                    // Set the data to the JSON model for the detail view
+                    this.oJSONModelHistory.setData(oData.results);
+                },
+                error: (oError: any) => {
+                    console.error("Error fetching data:", oError.message);
+                }
+            })
+            
+        }
     }
     _onObjectMatched(oEvent: Route$PatternMatchedEvent): void {
         var oArgs = (<any>oEvent.getParameter("arguments"));
@@ -173,7 +177,7 @@ export default class Detail extends Controller {
             router.navTo("RouteMain", {}, true);
         }
     }
-   
+
     toTrayDesigner(): void {
 
     }
@@ -191,82 +195,6 @@ export default class Detail extends Controller {
         oSelect.addItem(oItem);
         oSelect.setSelectedKey("2");
     }
-    populateTable(): void {
-
-        var jModel = new JSONModel();
-        jModel.setData({
-            oum: [
-                {
-                    type: "PAL",
-                    palletQty: 4,
-                    palletHeight: 0.14,
-                    trpQty: 1,
-                    trpLength: 20,
-                    trpWidth: 30,
-                    trpHeight: 33,
-                    trpGWeight: 4.02,
-                    netWeight: 150.3
-                },
-                {
-                    type: "TRP",
-                    palletQty: 4,
-                    palletHeight: 0.15,
-                    trpQty: 1,
-                    trpLength: 25,
-                    trpWidth: 33,
-                    trpHeight: 35,
-                    trpGWeight: 5.25,
-                    netWeight: 150.4
-                }
-            ]
-        })
-        var table = <Table>this.byId("UOM");
-        var tableWeight = <Table>this.byId("netWeight");
-        table.setModel(jModel);
-        tableWeight.setModel(jModel);
-
-    }
-    populateVHTable(): void {
-
-        var jModel = new JSONModel();
-        jModel.setData({
-            woihistory: [
-                {
-                    trayID: "97090022-20",
-                    status: "DI",
-                    version: "ZZ",
-                    revisionDate: new Date("2013/01/13"),
-                    createdBy: "BDU_API",
-                    validFrom: new Date("2013/02/14"),
-                    validTo: new Date("2013/02/16"),
-                    woiPdf: "97090022-20.pdf"
-                },
-                {
-                    trayID: "97090022-20",
-                    status: "DI",
-                    version: "ZB",
-                    revisionDate: new Date("2016/10/30"),
-                    createdBy: "A Bsson",
-                    validFrom: new Date("2016/11/06"),
-                    validTo: new Date("2016/11/12"),
-                    woiPdf: "97090022-20.pdf"
-                },
-                {
-                    trayID: "97090023-20",
-                    status: "DI",
-                    version: "ZB",
-                    revisionDate: new Date("2013/12/09"),
-                    createdBy: "A Bsson",
-                    validFrom: new Date("2013/12/10"),
-                    validTo: new Date("2012/12/12"),
-                    woiPdf: "97090022-20.pdf"
-                }
-            ]
-        });
-
-        this.getView()?.setModel(jModel, "woihistory");
-
-    }
     pressView(): void {
         //show PDF
     }
@@ -275,12 +203,10 @@ export default class Detail extends Controller {
     }
     toggleTextAreaSIM(): void {
         var oTextArea = <TextArea>this.byId("SIM");
-        oTextArea.setValue("Special instructions Mark");
         oTextArea.setEditable(false);
     }
     toggleTextAreaSIF(): void {
         var oTextArea = <TextArea>this.byId("SIF");
-        oTextArea.setValue("Special instructions Factory");
         oTextArea.setEditable(false);
     }
     editSIM(): void {
@@ -442,7 +368,7 @@ export default class Detail extends Controller {
     editStatus(): void {
         var oButton = <Button>this.byId("editStatus")
         oButton.setType("Default");
-
+        var that = this;
         var dialog = this.dialog;
 
         var oInput = <Input>this.byId("inputStatus")
@@ -474,6 +400,9 @@ export default class Detail extends Controller {
                 text: "Submit",
                 press: function () {
                     //send data
+                    //trigger /sap/opu/odata/SAP/Z_TRAYFACTPROCESS_SRV/SaveWI?Matnr='97000140-06'&ReasonForRejectionChange=''&Werks='CZ26'&DIFlag=false&Dokst=''&MarketText=''&Dokvr=''&ReasonForRejection=''&PdfLink=''&FoldingMethod=''&FactoryText=''&$format=json
+                    that.triggerSaveWi();
+
                     //##if succefull
                     oButton.setType("Success");
                     var oSelectedItem = oSelect.getSelectedItem();
@@ -495,11 +424,39 @@ export default class Detail extends Controller {
         });
         dialog.open();
     }
+    triggerSaveWi(): void {
+       //&Dokst=''&MarketText=''&Dokvr=''&ReasonForRejection=''&PdfLink=''&FoldingMethod=''&FactoryText=''&$format=json
+        this.oJSONModel.getProperty("Brgew");
+       this.oODataModel.callFunction("/SaveWI", 
+        {
+            method: "POST",
+            urlParameters: {
+                "Matnr": this.oJSONModel.getProperty("Brgew"),
+                "ReasonForRejectionChange": "",
+                "Werks": this.oJSONModel.getProperty("Werks"),
+                "DIFlag": false,
+                "Dokst": this.oJSONModel.getProperty("Dokst"),
+                "MarketText": "",
+                "Dokvr": this.oJSONModel.getProperty("Dokvr"),
+                "ReasonForRejection": "",
+                "PdfLink": "",
+                "FoldingMethod": "",
+                "FactoryText": "",
+            },
+            success: (oData: any) => {
+                // Set the data to the JSON model for the detail view
+                this.oJSONModel.setData(oData);
+            },
+            error: (oError: any) => {
+                console.error("Error fetching data:", oError.message);
+            }
+        })
+    }
     editUOM(): void {
 
         var dialog = this.dialog;
         var oTable = this.getView()?.byId("UOM");
-        
+
         //create model
         var oModel = new JSONModel({
             tableData: [
@@ -526,7 +483,7 @@ export default class Detail extends Controller {
             { label: "Gross Weight (KG)", template: "GrossWeight" },
         ];
 
-        aColumns.forEach(function(column) {
+        aColumns.forEach(function (column) {
             oTablenew.addColumn(new Column({
                 label: new Label({ text: column.label }),
                 template: new Input({ value: "{" + column.template + "}" }),
@@ -535,11 +492,11 @@ export default class Detail extends Controller {
         oTablenew.addColumn(new Column({
             label: new Label({ text: "Paste Here" }),
             template: new Text({ text: "" }),
-           
+
         }));
 
         oTablenew.setModel(oModel);
-        oTablenew.bindRows({path :"/tableData"});
+        oTablenew.bindRows({ path: "/tableData" });
 
         dialog = new Dialog({
             type: DialogType.Message,
@@ -572,25 +529,25 @@ export default class Detail extends Controller {
         });
         dialog.open();
     }
-    tablePaste(oEvent: Event): void{
-        var aClipboardData = oEvent.getParameter("data");
-        console.log("Pasted data:", aClipboardData);
+    tablePaste(oEvent: Event): void {
+        // var aClipboardData = oEvent.getParameter("data");
+        // console.log("Pasted data:", aClipboardData);
 
         // Assuming the clipboard data is structured in rows and columns matching the table structure
-        var aStructuredData = aClipboardData.map(function(row: any) {
-            return {
-                Type: row[0],
-                Qty: parseInt(row[1], 10),
-                Length: parseFloat(row[2]),
-                Width: parseFloat(row[3]),
-                Height: parseFloat(row[4]),
-                GrossWeight: parseFloat(row[5]),
-                NetWeight: parseFloat(row[6])
-            };
-        });
-    
+        // var aStructuredData = aClipboardData.map(function (row: any) {
+        //     return {
+        //         Type: row[0],
+        //         Qty: parseInt(row[1], 10),
+        //         Length: parseFloat(row[2]),
+        //         Width: parseFloat(row[3]),
+        //         Height: parseFloat(row[4]),
+        //         GrossWeight: parseFloat(row[5]),
+        //         NetWeight: parseFloat(row[6])
+        //     };
+        // });
+
     }
-    Clipboard(row: any): any{
+    Clipboard(row: any): any {
 
     }
 }
